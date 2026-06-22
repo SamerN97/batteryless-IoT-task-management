@@ -1,0 +1,1 @@
+This folder will contain all the output data from AP_model.py to be used in evaluation.py.
