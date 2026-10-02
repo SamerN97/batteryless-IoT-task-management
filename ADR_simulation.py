@@ -121,8 +121,8 @@ if training_data:
     csv_path = "training_adr_simulation_" + payload_option + "_bytes_payload.csv"
 else:    
     csv_path = "validation_adr_simulation_" + payload_option + "_bytes_payload.csv"
-# df.to_csv(csv_path, index=False)
-# print(f"CSV saved to: {csv_path}")
+df.to_csv(csv_path, index=False)
+print(f"CSV saved to: {csv_path}")
 
 # -------------------------------
 # 6. Plotting (4-panel version)
