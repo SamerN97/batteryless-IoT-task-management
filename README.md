@@ -102,7 +102,7 @@ For each target reward configuration $o$ (where $o$ is either `"jitter"` or `"of
 
 To parse data files and output the analytical multi-criteria benchmarking charts, run:
 ```bash
-python evaluation.py
+python evaluation_median_iqd.py
 ```
 
 This generates continuous parameter trends across all evaluated capacitor bounds for:
@@ -111,6 +111,7 @@ This generates continuous parameter trends across all evaluated capacitor bounds
 * **Median Continuous ON-State Survival Time** 
 * **Median Daily Maximum ITI (Pacing under harvesting gaps)** 
 * **Median Continuous OFF-State Recovery Duration**
+* **Total Continuous OFF-time**
 
 ---
 
@@ -127,3 +128,7 @@ To identically reproduce the figures and numerical bounds presented in the publi
   adrList = pd.read_csv('original_validation_adr_simulation_' + payloadOption + '_bytes_payload.csv', sep = ',')
 
 * **RL-model Swap:** Change `OFF_OPT` and `JITTER_OPT` to `ORIGINAL_OFF_OPT` and `ORIGINAL_JITTER_OPT` in the suffix/additional_text for both `RL_model.py` and `inference.py`
+
+* **Test data implementation:** To obtain the results for the test data, run all the previous steps for the `_antwerp_` files with the `antwerp_solar_data_new_conversion.csv` data.
+
+---

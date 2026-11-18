@@ -21,13 +21,13 @@ plt.figure(figsize=(8, 4))
 plt.plot(x_days, dataList, color='green', linewidth=1.5, label='Harvested Current ($I_H$)')
 
 # plt.title(title, fontsize=16, fontweight='bold')
-plt.xlabel('Time (Days)', fontsize=14)
+plt.xlabel('Time (Days)', fontsize=18)
 # Added 'Unit' to Y-label for academic rigor
-plt.ylabel('Harvesting Current (A)', fontsize=14) 
+plt.ylabel('Harvesting Current (A)', fontsize=18) 
 
 # Optional: Set ticks every 5 or 10 days for better readability
-plt.xticks(np.arange(0, x_days.max() + 1, 5), fontsize=12) 
-plt.yticks(fontsize=12)
+plt.xticks(np.arange(0, x_days.max() + 1, 5), fontsize=16) 
+plt.yticks(fontsize=16)
 
 plt.grid(True, which="both", ls="--", alpha=0.5)
 plt.xlim(0, x_days.max()) # Ensure plot starts exactly at Day 0

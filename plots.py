@@ -246,7 +246,7 @@ def fill_with_interpolation(array, nrOfInterpolationPoints):
 # Main block to call the function
 if __name__ == "__main__":
 
-    capSizeStr = "10"
+    capSizeStr = "7.5"
     trainingCapSizeStr = "random_0.5_10"
     trainingPayload = "daily_random_20_255"
     payloadOption = "daily_random_20_255"
@@ -259,14 +259,15 @@ if __name__ == "__main__":
     neg_inaction_reward = -0.5
     training_neg_inaction_reward = -0.5
     gamma = 0.99    
-    V_thresh = 3
+    V_thresh = 1.9
+    active_seed = 42
 
-    training_parameter_suffix = agent_option + "_" + str(training_neg_inaction_reward) + "_INACTION_REWARD_ADR_" + trainingPayload + "_BYTES_" + trainingCapSizeStr + "FARAD_TSF_" + str(tsf_max) + "_GAMMA_" + str(gamma)  # naming convention: POSREWARD_NEGREWARD_ALPHA_MU_SPREADING_SIGMA_HISTORYSIZE
-    inference_parameter_suffix = agent_option + "_" + str(training_neg_inaction_reward) + "_INACTION_REWARD_ADR_" + payloadOption + "_BYTES_" + capSizeStr + "FARAD_TSF_" + str(tsf_max)  # naming convention: POSREWARD_NEGREWARD_ALPHA_MU_SPREADING_SIGMA_HISTORYSIZE
-    baseline_parameter_suffix = "ADR_" + payloadOption + "_BYTES_" + capSizeStr + "_FARAD_" + str(V_thresh) + "V_THRESH" # naming convention: _ALPHA_MU_SPREADING_SIGMA_HISTORYSIZE
-    predictive_parameter_suffix = "ADR_" + payloadOption + "_BYTES_" + capSizeStr + "FARAD"
-    oracle_parameter_suffix = "ADR_" + payloadOption + "_BYTES_" + capSizeStr + "FARAD" 
-    astar_parameter_suffix = "ADR_" + payloadOption + "_BYTES_" + capSizeStr + "FARAD"
+    training_parameter_suffix = agent_option + "_" + str(training_neg_inaction_reward) + "_INACTION_REWARD_ORIGINAL_ADR_" + trainingPayload + "_BYTES_" + trainingCapSizeStr + "FARAD_TSF_" + str(tsf_max) + "_GAMMA_" + str(gamma) + "_SEED_" + str(active_seed)  # naming convention: POSREWARD_NEGREWARD_ALPHA_MU_SPREADING_SIGMA_HISTORYSIZE
+    inference_parameter_suffix = "ANTWERP_" + agent_option + "_" + str(training_neg_inaction_reward) + "_IN_REW_ORIGINAL_ADR_" + payloadOption + "_B_" + capSizeStr + "F_TSF_" + str(tsf_max)  # naming convention: POSREWARD_NEGREWARD_ALPHA_MU_SPREADING_SIGMA_HISTORYSIZE
+    baseline_parameter_suffix = "ANTWERP_ADR_" + payloadOption + "_BYTES_" + capSizeStr + "_FARAD_" + str(V_thresh) + "V_THRESH" # naming convention: _ALPHA_MU_SPREADING_SIGMA_HISTORYSIZE
+    predictive_parameter_suffix = "ANTWERP_ADR_" + payloadOption + "_BYTES_" + capSizeStr + "FARAD"
+    oracle_parameter_suffix = "ANTWERP_ADR_" + payloadOption + "_BYTES_" + capSizeStr + "FARAD" 
+    astar_parameter_suffix = "ANTWERP_ADR_" + payloadOption + "_BYTES_" + capSizeStr + "FARAD"
 
     titles3 = ["Actions", "Harvesting current", "Capacitor Voltage"]
 
@@ -300,7 +301,7 @@ if __name__ == "__main__":
 
     # multiplot_baseline = ['baselineModelData/actionList' + baseline_parameter_suffix + '.csv', 'baselineModelData/currentList' + baseline_parameter_suffix + '.csv', 'baselineModelData/voltageList' + baseline_parameter_suffix + '.csv']
     
-    multiplot_predictive = ['APModelData/actionList' + predictive_parameter_suffix + '.csv', 'mathModelData/currentList' + predictive_parameter_suffix + '.csv', 'mathModelData/voltageList' + predictive_parameter_suffix + '.csv']
+    multiplot_predictive = ['APModelData/actionList' + predictive_parameter_suffix + '.csv', 'APModelData/currentList' + predictive_parameter_suffix + '.csv', 'APModelData/voltageList' + predictive_parameter_suffix + '.csv']
 
     multiplot_astar = ['astarModelData/actionList' + astar_parameter_suffix + '.csv', 'astarModelData/currentList' + astar_parameter_suffix + '.csv', 'astarModelData/voltageList' + astar_parameter_suffix + '.csv']
 
@@ -308,7 +309,9 @@ if __name__ == "__main__":
 
     # multiplot_goodIT = ['goodITData/actionList' + goodIT_parameter_suffix + '.csv', 'goodITData/currentList' + goodIT_parameter_suffix + '.csv', 'goodITData/voltageList' + goodIT_parameter_suffix + '.csv']
 
-    # multiplot_baseline = ['baselineModelData/actionList' + baseline_parameter_suffix + '.csv', 'baselineModelData/currentList' + baseline_parameter_suffix + '.csv', 'baselineModelData/voltageList' + baseline_parameter_suffix + '.csv']
+    multiplot_baseline = ['staticThreshModelData/actionList' + baseline_parameter_suffix + '.csv', 'staticThreshModelData/currentList' + baseline_parameter_suffix + '.csv', 'staticThreshModelData/voltageList' + baseline_parameter_suffix + '.csv']
+
+    multiplot_oracle = ['oracleModelData/actionList' + oracle_parameter_suffix + '.csv', 'oracleModelData/currentList' + oracle_parameter_suffix + '.csv', 'oracleModelData/voltageList' + oracle_parameter_suffix + '.csv']
 
 
     # Plot the data
@@ -322,7 +325,7 @@ if __name__ == "__main__":
     
     # plot_multiple_graphs_from_csv(multiplot_inference, titles4, x_col, y_col, nrows=3, ncols=1)
     
-    plot_multiple_graphs_from_csv(multiplot_inference, titles4, x_col, y_col, nrows=3, ncols=1)
+    # plot_multiple_graphs_from_csv(multiplot_inference, titles4, x_col, y_col, nrows=3, ncols=1)
 
     # plot_multiple_graphs_from_csv(multiplot_training, titles4, x_col, y_col, nrows=6, ncols=1)
 
@@ -330,7 +333,9 @@ if __name__ == "__main__":
 
     # plot_multiple_graphs_from_csv(multiplot_astar, titles3, x_col, y_col, nrows=3, ncols=1)
 
-    # plot_multiple_graphs_from_csv(multiplot_oracle, titles3, x_col, y_col, nrows=3, ncols=1)
+    plot_multiple_graphs_from_csv(multiplot_oracle, titles3, x_col, y_col, nrows=3, ncols=1)
+
+    # plot_multiple_graphs_from_csv(multiplot_baseline, titles3, x_col, y_col, nrows=3, ncols=1)
 
     # plot_multiple_graphs_from_csv(multiplot_goodIT, titles3, x_col, y_col, nrows=3, ncols=1)
 

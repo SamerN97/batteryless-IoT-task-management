@@ -1,1 +1,0 @@
-This folder will contain all the output data from oracleModelCode to be used in evaluation.py.

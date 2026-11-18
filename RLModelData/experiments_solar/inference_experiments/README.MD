@@ -1,1 +1,0 @@
-This folder will contain all the output data from inference.py to be used in evaluation.py.

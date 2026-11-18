@@ -2,8 +2,7 @@ This directory contains solar irradiance data, captured in Hveraðerdi, Iceland,
 
 Please use the following reference when using this data:
 
-```text
-@INPROCEEDINGS{10978303,
+`@INPROCEEDINGS{10978303,
   author={Puluckul, Priyesh Pappinisseri and Weyn, Maarten},
   booktitle={2025 IEEE Wireless Communications and Networking Conference (WCNC)},
   title={Experiences with Sub-Arctic Sensor Network Deployment},
@@ -12,5 +11,4 @@ Please use the following reference when using this data:
   number={},
   pages={1-6},
   doi={10.1109/WCNC61545.2025.10978303}
-}
-```
+}`
